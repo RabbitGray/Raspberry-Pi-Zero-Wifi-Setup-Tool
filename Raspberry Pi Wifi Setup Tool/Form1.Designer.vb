@@ -28,7 +28,6 @@ Partial Class Form1
         Me.txtPASSWORD = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.chkWarning = New System.Windows.Forms.CheckBox()
         Me.btnWrite = New System.Windows.Forms.Button()
         Me.cmboDrives = New System.Windows.Forms.ComboBox()
         Me.chkShowPassword = New System.Windows.Forms.CheckBox()
@@ -61,7 +60,6 @@ Partial Class Form1
         Me.GroupBoxSettings.Controls.Add(Me.txtPASSWORD)
         Me.GroupBoxSettings.Controls.Add(Me.Label1)
         Me.GroupBoxSettings.Controls.Add(Me.Label2)
-        Me.GroupBoxSettings.Controls.Add(Me.chkWarning)
         Me.GroupBoxSettings.Controls.Add(Me.btnWrite)
         Me.GroupBoxSettings.Controls.Add(Me.cmboDrives)
         Me.GroupBoxSettings.Controls.Add(Me.chkShowPassword)
@@ -114,19 +112,9 @@ Partial Class Form1
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Password"
         '
-        'chkWarning
-        '
-        Me.chkWarning.AutoSize = True
-        Me.chkWarning.Location = New System.Drawing.Point(27, 280)
-        Me.chkWarning.Name = "chkWarning"
-        Me.chkWarning.Size = New System.Drawing.Size(141, 17)
-        Me.chkWarning.TabIndex = 16
-        Me.chkWarning.Text = "Disable Startup Warning"
-        Me.chkWarning.UseVisualStyleBackColor = True
-        '
         'btnWrite
         '
-        Me.btnWrite.Location = New System.Drawing.Point(184, 218)
+        Me.btnWrite.Location = New System.Drawing.Point(181, 254)
         Me.btnWrite.Name = "btnWrite"
         Me.btnWrite.Size = New System.Drawing.Size(115, 36)
         Me.btnWrite.TabIndex = 4
@@ -136,7 +124,7 @@ Partial Class Form1
         'cmboDrives
         '
         Me.cmboDrives.FormattingEnabled = True
-        Me.cmboDrives.Location = New System.Drawing.Point(181, 169)
+        Me.cmboDrives.Location = New System.Drawing.Point(181, 215)
         Me.cmboDrives.Name = "cmboDrives"
         Me.cmboDrives.Size = New System.Drawing.Size(115, 21)
         Me.cmboDrives.TabIndex = 5
@@ -165,7 +153,7 @@ Partial Class Form1
         Me.chkEnableSSH.AutoSize = True
         Me.chkEnableSSH.Checked = True
         Me.chkEnableSSH.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkEnableSSH.Location = New System.Drawing.Point(181, 122)
+        Me.chkEnableSSH.Location = New System.Drawing.Point(178, 153)
         Me.chkEnableSSH.Name = "chkEnableSSH"
         Me.chkEnableSSH.Size = New System.Drawing.Size(118, 17)
         Me.chkEnableSSH.TabIndex = 13
@@ -182,7 +170,7 @@ Partial Class Form1
         'ListboxDrives
         '
         Me.ListboxDrives.FormattingEnabled = True
-        Me.ListboxDrives.Location = New System.Drawing.Point(27, 122)
+        Me.ListboxDrives.Location = New System.Drawing.Point(17, 153)
         Me.ListboxDrives.Name = "ListboxDrives"
         Me.ListboxDrives.Size = New System.Drawing.Size(120, 147)
         Me.ListboxDrives.TabIndex = 12
@@ -197,7 +185,7 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(181, 153)
+        Me.Label5.Location = New System.Drawing.Point(178, 199)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(77, 13)
         Me.Label5.TabIndex = 11
@@ -217,7 +205,7 @@ Partial Class Form1
         Me.chkExit.AutoSize = True
         Me.chkExit.Checked = True
         Me.chkExit.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkExit.Location = New System.Drawing.Point(193, 260)
+        Me.chkExit.Location = New System.Drawing.Point(190, 296)
         Me.chkExit.Name = "chkExit"
         Me.chkExit.Size = New System.Drawing.Size(103, 17)
         Me.chkExit.TabIndex = 10
@@ -247,7 +235,7 @@ Partial Class Form1
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.lblStatus})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 402)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(355, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(353, 22)
         Me.StatusStrip1.TabIndex = 21
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -314,7 +302,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(355, 424)
+        Me.ClientSize = New System.Drawing.Size(353, 424)
         Me.Controls.Add(Me.GroupBoxSettings)
         Me.Controls.Add(Me.lblWarningTitle)
         Me.Controls.Add(Me.btnWarning)
@@ -341,7 +329,6 @@ Partial Class Form1
     Friend WithEvents txtPASSWORD As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents chkWarning As CheckBox
     Friend WithEvents btnWrite As Button
     Friend WithEvents cmboDrives As ComboBox
     Friend WithEvents chkShowPassword As CheckBox
