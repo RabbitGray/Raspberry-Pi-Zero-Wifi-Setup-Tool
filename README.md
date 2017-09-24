@@ -2,11 +2,13 @@
 
 This is a simple tool for setting up wifi for a headless Raspberry Pi Zero, also works on Rpi3
 
-It will create the wpa_supplicant.conf and populate it with your settings.
+It will create the wpa_supplicant.conf and populate it with your settings, also can create ssh file.
 
 Also sets up a work-around for getting Raspbian Stretch Lite and Full Wifi networking.
 
-************************************WARNING************************************
+
+
+WARNING
 
 USE AT YOUR OWN RISK
 I am not responsible if this software damages or corrupts your 
