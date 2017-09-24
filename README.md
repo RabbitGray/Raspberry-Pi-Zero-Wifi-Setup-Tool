@@ -1,3 +1,4 @@
+
 # Raspberry-Pi-Zero-Wifi-Setup-Tool
 
 This is a simple tool for setting up wifi for a headless Raspberry Pi Zero, also works on Rpi3
@@ -7,6 +8,7 @@ It will create the wpa_supplicant.conf and populate it with your settings, also 
 Also sets up a work-around for getting Raspbian Stretch Lite and Full Wifi networking.
 
 
+# Written in .Net using Visual Studio 2017
 
 WARNING
 
