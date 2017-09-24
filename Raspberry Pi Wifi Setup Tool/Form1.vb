@@ -81,7 +81,6 @@ Public Class Form1
             Dim fileLoc As String = DrivePath & "\ssh"
             File.Create(fileLoc).Close()
 
-
         Catch e As Exception
             lblStatus.Text = e.Message
 
@@ -92,7 +91,6 @@ Public Class Form1
         If chkExit.CheckState = CheckState.Checked Then
             Application.Exit()
         End If
-
     End Sub
 
     Private Sub btnWrite_Click(sender As Object, e As EventArgs) Handles btnWrite.Click
@@ -107,14 +105,6 @@ Public Class Form1
         My.Settings.checkboxExit = chkExit.CheckState
         My.Settings.checkboxSSH = chkEnableSSH.CheckState
         My.Settings.Save()
-    End Sub
-
-    Private Sub chkShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPassword.CheckedChanged
-
-    End Sub
-
-    Private Sub cmboDrives_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmboDrives.SelectedIndexChanged
-
     End Sub
 
     Private Sub btnFindDrives_Click(sender As Object, e As EventArgs) Handles btnFindDrives.Click
