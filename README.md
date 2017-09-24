@@ -1,3 +1,5 @@
+Written in .Net using Visual Studio 2017
+
 # Raspberry-Pi-Zero-Wifi-Setup-Tool
 
 This is a simple tool for setting up wifi for a headless Raspberry Pi Zero, also works on Rpi3
