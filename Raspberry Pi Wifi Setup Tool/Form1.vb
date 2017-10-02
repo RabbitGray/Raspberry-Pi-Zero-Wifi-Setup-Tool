@@ -86,11 +86,12 @@ Public Class Form1
 
         Finally
             lblStatus.Text = "Successfully written files."
-        End Try
 
-        If chkExit.CheckState = CheckState.Checked Then
-            Application.Exit()
-        End If
+            If chkExit.CheckState = CheckState.Checked Then
+                MsgBox("Successfully written files.")
+                Application.Exit()
+            End If
+        End Try
     End Sub
 
     Private Sub btnWrite_Click(sender As Object, e As EventArgs) Handles btnWrite.Click

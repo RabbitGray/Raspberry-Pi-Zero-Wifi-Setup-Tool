@@ -30,7 +30,6 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnWrite = New System.Windows.Forms.Button()
         Me.cmboDrives = New System.Windows.Forms.ComboBox()
-        Me.chkShowPassword = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.chkEnableSSH = New System.Windows.Forms.CheckBox()
         Me.txtWPA = New System.Windows.Forms.TextBox()
@@ -62,7 +61,6 @@ Partial Class Form1
         Me.GroupBoxSettings.Controls.Add(Me.Label2)
         Me.GroupBoxSettings.Controls.Add(Me.btnWrite)
         Me.GroupBoxSettings.Controls.Add(Me.cmboDrives)
-        Me.GroupBoxSettings.Controls.Add(Me.chkShowPassword)
         Me.GroupBoxSettings.Controls.Add(Me.Label3)
         Me.GroupBoxSettings.Controls.Add(Me.chkEnableSSH)
         Me.GroupBoxSettings.Controls.Add(Me.txtWPA)
@@ -128,16 +126,6 @@ Partial Class Form1
         Me.cmboDrives.Name = "cmboDrives"
         Me.cmboDrives.Size = New System.Drawing.Size(115, 21)
         Me.cmboDrives.TabIndex = 5
-        '
-        'chkShowPassword
-        '
-        Me.chkShowPassword.AutoSize = True
-        Me.chkShowPassword.Location = New System.Drawing.Point(226, 46)
-        Me.chkShowPassword.Name = "chkShowPassword"
-        Me.chkShowPassword.Size = New System.Drawing.Size(86, 17)
-        Me.chkShowPassword.TabIndex = 14
-        Me.chkShowPassword.Text = "Show / Hide"
-        Me.chkShowPassword.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -331,7 +319,6 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents btnWrite As Button
     Friend WithEvents cmboDrives As ComboBox
-    Friend WithEvents chkShowPassword As CheckBox
     Friend WithEvents Label3 As Label
     Friend WithEvents chkEnableSSH As CheckBox
     Friend WithEvents txtWPA As TextBox
