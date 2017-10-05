@@ -5,12 +5,16 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "Raspberry Pi Zero Wifi Setup Tool"
+        'load stored application settings
         txtSSID.Text = My.Settings.ssid
         txtPASSWORD.Text = My.Settings.password
         txtWPA.Text = My.Settings.key_mgmt
         txtCountry.Text = My.Settings.country
         chkExit.Checked = My.Settings.checkboxExit
         chkEnableSSH.Checked = My.Settings.checkboxSSH
+        chkSSIDHidden.Checked = My.Settings.checkboxSSIDHidden
+        chkStorePassword.Checked = My.Settings.checkboxPassword
+        'hide groupboxes until user agrees
         GroupBoxDrive.Visible = False
         GroupBoxFind.Visible = False
         GroupBoxSettings.Visible = False
@@ -18,6 +22,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnWarning_Click(sender As Object, e As EventArgs) Handles btnWarning.Click
+        'show and hide groupboxes
         GroupBoxDrive.Visible = True
         GroupBoxFind.Visible = True
         GroupBoxWrite.Visible = True
@@ -28,6 +33,7 @@ Public Class Form1
     End Sub
 
     Public Sub loadDrives()
+        'search for removable drives connected to computer
         Dim drive As DriveInfo
         Try
             For Each drive In DriveInfo.GetDrives()
@@ -47,6 +53,7 @@ Public Class Form1
                     End Try
                 End If
             Next
+            'select the first item in the combobox
             cmboDrives.SelectedIndex = 0
             GroupBoxDrive.Enabled = True
             GroupBoxWrite.Enabled = True
@@ -56,23 +63,17 @@ Public Class Form1
     End Sub
 
     Public Sub writeFiles()
-        Dim hiddenSSID As Integer
-
-        If chkEnableSSH.CheckState = CheckState.Checked Then
-            hiddenSSID = 1
-        Else
-            hiddenSSID = 0
-        End If
-
         lblStatus.Text = "Writing files now"
+        'reference drive name from combobox 
         DrivePath = cmboDrives.Text.ToString()
         Try
+            'creat simple list to store all the data in
             Dim lines() As String = {
             "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev",
             "update_config=1",
             "country=" & txtCountry.Text,
             "network={",
-            "scan_ssid=" & hiddenSSID,
+            "scan_ssid=" & CheckBoolean(chkSSIDHidden.Checked),
             "ssid=" & Chr(34) & txtSSID.Text & Chr(34),
             "psk=" & Chr(34) & txtPASSWORD.Text & Chr(34),
             "key_mgmt=" & txtWPA.Text,
@@ -84,36 +85,46 @@ Public Class Form1
             "key_mgmt=WPA-PSK",
             "}"
         }
-
+            'write all the data using streamwriter to text file
             Using outputFile As New StreamWriter(DrivePath & Convert.ToString("\wpa_supplicant.conf"))
                 For Each line As String In lines
                     outputFile.WriteLine(line)
                 Next
             End Using
 
-            Dim fileLoc As String = DrivePath & "\ssh"
-            File.Create(fileLoc).Close()
+            'check if user wants ssh enabled
+            If CheckBoolean(chkEnableSSH.Checked) Then
+                Dim fileLoc As String = DrivePath & "\ssh"
+                File.Create(fileLoc).Close()
+            End If
 
         Catch e As Exception
             lblStatus.Text = e.Message
-
         Finally
             lblStatus.Text = "Successfully written files."
 
-            If chkExit.CheckState = CheckState.Checked Then
+
+            If CheckBoolean(chkExit.Checked) Then
                 MsgBox("Successfully written files.")
                 Application.Exit()
             End If
         End Try
     End Sub
 
+    'function to check boolean state of checkboxes for file output
+    Function CheckBoolean(Value As Boolean)
+        If Value Then Return "1"
+        Return "0"
+    End Function
+
     Private Sub btnWrite_Click(sender As Object, e As EventArgs) Handles btnWrite.Click
         writeFiles()
     End Sub
 
+    'save all settings
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         My.Settings.ssid = txtSSID.Text
-        If CheckBoxStorePassword.CheckState = CheckState.Unchecked Then
+        If CheckBoolean(chkStorePassword.Checked) Then
             My.Settings.password = txtPASSWORD.Text
         Else
             My.Settings.password = Nothing
@@ -122,6 +133,8 @@ Public Class Form1
         My.Settings.country = txtCountry.Text
         My.Settings.checkboxExit = chkExit.CheckState
         My.Settings.checkboxSSH = chkEnableSSH.CheckState
+        My.Settings.checkboxSSIDHidden = chkSSIDHidden.CheckState
+        My.Settings.checkboxPassword = chkStorePassword.CheckState
         My.Settings.Save()
     End Sub
 

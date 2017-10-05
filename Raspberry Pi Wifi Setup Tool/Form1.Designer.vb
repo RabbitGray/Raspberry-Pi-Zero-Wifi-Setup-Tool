@@ -24,6 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.GroupBoxDrive = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cmboDrives = New System.Windows.Forms.ComboBox()
         Me.txtSSID = New System.Windows.Forms.TextBox()
         Me.txtPASSWORD = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -34,7 +36,6 @@ Partial Class Form1
         Me.txtCountry = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnWrite = New System.Windows.Forms.Button()
-        Me.cmboDrives = New System.Windows.Forms.ComboBox()
         Me.chkEnableSSH = New System.Windows.Forms.CheckBox()
         Me.chkExit = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -48,10 +49,9 @@ Partial Class Form1
         Me.lblWarning = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.GroupBoxSettings = New System.Windows.Forms.GroupBox()
-        Me.CheckBoxStorePassword = New System.Windows.Forms.CheckBox()
+        Me.chkStorePassword = New System.Windows.Forms.CheckBox()
         Me.chkSSIDHidden = New System.Windows.Forms.CheckBox()
         Me.GroupBoxWrite = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBoxWarning = New System.Windows.Forms.GroupBox()
         Me.GroupBoxDrive.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -80,6 +80,23 @@ Partial Class Form1
         Me.GroupBoxDrive.TabIndex = 24
         Me.GroupBoxDrive.TabStop = False
         Me.GroupBoxDrive.Text = "Settings"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(26, 299)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(77, 13)
+        Me.Label6.TabIndex = 13
+        Me.Label6.Text = "Selected Drive"
+        '
+        'cmboDrives
+        '
+        Me.cmboDrives.FormattingEnabled = True
+        Me.cmboDrives.Location = New System.Drawing.Point(121, 296)
+        Me.cmboDrives.Name = "cmboDrives"
+        Me.cmboDrives.Size = New System.Drawing.Size(142, 21)
+        Me.cmboDrives.TabIndex = 5
         '
         'txtSSID
         '
@@ -163,14 +180,6 @@ Partial Class Form1
         Me.btnWrite.TabIndex = 4
         Me.btnWrite.Text = "Write Files"
         Me.btnWrite.UseVisualStyleBackColor = True
-        '
-        'cmboDrives
-        '
-        Me.cmboDrives.FormattingEnabled = True
-        Me.cmboDrives.Location = New System.Drawing.Point(121, 296)
-        Me.cmboDrives.Name = "cmboDrives"
-        Me.cmboDrives.Size = New System.Drawing.Size(142, 21)
-        Me.cmboDrives.TabIndex = 5
         '
         'chkEnableSSH
         '
@@ -284,7 +293,7 @@ Partial Class Form1
         '
         'GroupBoxSettings
         '
-        Me.GroupBoxSettings.Controls.Add(Me.CheckBoxStorePassword)
+        Me.GroupBoxSettings.Controls.Add(Me.chkStorePassword)
         Me.GroupBoxSettings.Controls.Add(Me.chkSSIDHidden)
         Me.GroupBoxSettings.Controls.Add(Me.chkEnableSSH)
         Me.GroupBoxSettings.Location = New System.Drawing.Point(349, 12)
@@ -294,15 +303,15 @@ Partial Class Form1
         Me.GroupBoxSettings.TabStop = False
         Me.GroupBoxSettings.Text = "Optional Settings"
         '
-        'CheckBoxStorePassword
+        'chkStorePassword
         '
-        Me.CheckBoxStorePassword.AutoSize = True
-        Me.CheckBoxStorePassword.Location = New System.Drawing.Point(29, 89)
-        Me.CheckBoxStorePassword.Name = "CheckBoxStorePassword"
-        Me.CheckBoxStorePassword.Size = New System.Drawing.Size(126, 17)
-        Me.CheckBoxStorePassword.TabIndex = 15
-        Me.CheckBoxStorePassword.Text = "Dont Store Password"
-        Me.CheckBoxStorePassword.UseVisualStyleBackColor = True
+        Me.chkStorePassword.AutoSize = True
+        Me.chkStorePassword.Location = New System.Drawing.Point(29, 89)
+        Me.chkStorePassword.Name = "chkStorePassword"
+        Me.chkStorePassword.Size = New System.Drawing.Size(126, 17)
+        Me.chkStorePassword.TabIndex = 15
+        Me.chkStorePassword.Text = "Dont Store Password"
+        Me.chkStorePassword.UseVisualStyleBackColor = True
         '
         'chkSSIDHidden
         '
@@ -326,15 +335,6 @@ Partial Class Form1
         Me.GroupBoxWrite.TabIndex = 32
         Me.GroupBoxWrite.TabStop = False
         Me.GroupBoxWrite.Text = "Write Files"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(26, 299)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(77, 13)
-        Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Selected Drive"
         '
         'GroupBoxWarning
         '
@@ -406,7 +406,7 @@ Partial Class Form1
     Friend WithEvents btnExit As Button
     Friend WithEvents GroupBoxSettings As GroupBox
     Friend WithEvents chkSSIDHidden As CheckBox
-    Friend WithEvents CheckBoxStorePassword As CheckBox
+    Friend WithEvents chkStorePassword As CheckBox
     Friend WithEvents GroupBoxWrite As GroupBox
     Friend WithEvents Label6 As Label
     Friend WithEvents GroupBoxWarning As GroupBox
