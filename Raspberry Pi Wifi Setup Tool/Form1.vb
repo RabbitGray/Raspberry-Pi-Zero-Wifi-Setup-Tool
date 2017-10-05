@@ -11,16 +11,20 @@ Public Class Form1
         txtCountry.Text = My.Settings.country
         chkExit.Checked = My.Settings.checkboxExit
         chkEnableSSH.Checked = My.Settings.checkboxSSH
-        GroupBoxSettings.Visible = False
+        GroupBoxDrive.Visible = False
         GroupBoxFind.Visible = False
+        GroupBoxSettings.Visible = False
+        GroupBoxWrite.Visible = False
     End Sub
 
     Private Sub btnWarning_Click(sender As Object, e As EventArgs) Handles btnWarning.Click
-        GroupBoxSettings.Visible = True
+        GroupBoxDrive.Visible = True
         GroupBoxFind.Visible = True
-        GroupBoxSettings.Enabled = False
-        lblWarningTitle.Visible = False
-        lblWarning.Visible = False
+        GroupBoxWrite.Visible = True
+        GroupBoxSettings.Visible = True
+        GroupBoxDrive.Enabled = False
+        GroupBoxWrite.Enabled = False
+        GroupBoxWarning.Visible = False
     End Sub
 
     Public Sub loadDrives()
@@ -44,15 +48,23 @@ Public Class Form1
                 End If
             Next
             cmboDrives.SelectedIndex = 0
-            GroupBoxSettings.Enabled = True
+            GroupBoxDrive.Enabled = True
+            GroupBoxWrite.Enabled = True
         Catch ex As Exception
             lblStatus.Text = "Error! Have you plugged in your SD Card?"
         End Try
     End Sub
 
     Public Sub writeFiles()
-        lblStatus.Text = "Writing files now"
+        Dim hiddenSSID As Integer
 
+        If chkEnableSSH.CheckState = CheckState.Checked Then
+            hiddenSSID = 1
+        Else
+            hiddenSSID = 0
+        End If
+
+        lblStatus.Text = "Writing files now"
         DrivePath = cmboDrives.Text.ToString()
         Try
             Dim lines() As String = {
@@ -60,6 +72,7 @@ Public Class Form1
             "update_config=1",
             "country=" & txtCountry.Text,
             "network={",
+            "scan_ssid=" & hiddenSSID,
             "ssid=" & Chr(34) & txtSSID.Text & Chr(34),
             "psk=" & Chr(34) & txtPASSWORD.Text & Chr(34),
             "key_mgmt=" & txtWPA.Text,
@@ -100,7 +113,11 @@ Public Class Form1
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         My.Settings.ssid = txtSSID.Text
-        My.Settings.password = txtPASSWORD.Text
+        If CheckBoxStorePassword.CheckState = CheckState.Unchecked Then
+            My.Settings.password = txtPASSWORD.Text
+        Else
+            My.Settings.password = Nothing
+        End If
         My.Settings.key_mgmt = txtWPA.Text
         My.Settings.country = txtCountry.Text
         My.Settings.checkboxExit = chkExit.CheckState
@@ -115,4 +132,5 @@ Public Class Form1
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Application.Exit()
     End Sub
+
 End Class
