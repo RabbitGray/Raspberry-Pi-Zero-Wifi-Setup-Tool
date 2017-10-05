@@ -27,8 +27,11 @@ Public Class Form1
         GroupBoxFind.Visible = True
         GroupBoxWrite.Visible = True
         GroupBoxSettings.Visible = True
+        'disable tools until drive is found
         GroupBoxDrive.Enabled = False
         GroupBoxWrite.Enabled = False
+        GroupBoxSettings.Enabled = False
+        'hide warning
         GroupBoxWarning.Visible = False
     End Sub
 
@@ -55,8 +58,10 @@ Public Class Form1
             Next
             'select the first item in the combobox
             cmboDrives.SelectedIndex = 0
+            'enable tool since finding drives
             GroupBoxDrive.Enabled = True
             GroupBoxWrite.Enabled = True
+            GroupBoxSettings.Enabled = True
         Catch ex As Exception
             lblStatus.Text = "Error! Have you plugged in your SD Card?"
         End Try
